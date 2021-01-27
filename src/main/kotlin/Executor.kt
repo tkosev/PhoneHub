@@ -40,6 +40,10 @@ class Executor : CommandExecutor, ICommand {
         fun handleOut(output: String)
     }
 
+    override fun mirrorScreen() {
+        TODO("Not yet implemented")
+    }
+
     override fun killAdbServer() {
         TODO("Not yet implemented")
     }
@@ -48,11 +52,47 @@ class Executor : CommandExecutor, ICommand {
         TODO("Not yet implemented")
     }
 
-    override fun getDevices() {
+    override fun getDevices(isProductModelNeeded: Boolean) {
         executeCommand("adb devices")
     }
 
     override fun tapOnScreen(x: Float, y: Float) {
         executeCommand("adb shell input tap $x $y")
+    }
+
+    override fun rebootDevice(isRecovery: Boolean) {
+        TODO("Not yet implemented")
+    }
+
+    override fun rebootDeviceBootloader() {
+        TODO("Not yet implemented")
+    }
+
+    override fun root() {
+        TODO("Not yet implemented")
+    }
+
+    override fun connectToIP(ip: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun homeButton() {
+        TODO("Not yet implemented")
+    }
+
+    override fun inputTextOnSelectField(text: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun screenShot() {
+        TODO("Not yet implemented")
+    }
+
+    override fun applyKey(key: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getHeightAndWidth() {
+        TODO("Not yet implemented")
     }
 }
