@@ -1,3 +1,4 @@
+import AndroidKeys.KEYCODE_CALL
 
 fun main(args: Array<String>) {
     val executor = Executor()
@@ -10,11 +11,12 @@ fun main(args: Array<String>) {
             println("Tag all : $output")
         }
 
-        override fun onErrorOutput(error:String) {
+        override fun onErrorOutput(error: String) {
             println("Tag error : $error")
         }
     }
 
     executor.getDevices()
-    executor.tapOnScreen(200f,200f)
+    executor.tapOnScreen(200f, 200f)
+    executor.applyKey(KEYCODE_CALL)
 }

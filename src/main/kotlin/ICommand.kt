@@ -45,7 +45,7 @@ interface ICommand {
     fun homeButton()
     fun inputTextOnSelectField(text: String)
     fun screenShot()
-    fun applyKey(key: String)
+    fun applyKey(key: Int)
     fun getHeightAndWidth()
 }
 /**

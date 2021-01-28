@@ -5,7 +5,7 @@ object AndroidKeys {
     const val KEYCODE_HOME = 3
     const val KEYCODE_BACK = 4
     const val KEYCODE_CALL = 5
-    const val KEYCODE_ENDCALL = 6
+    const val KEYCODE_END_CALL = 6
     const val KEYCODE_1 = 8
     const val KEYCODE_2 = 9
     const val KEYCODE_3 = 10

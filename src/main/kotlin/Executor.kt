@@ -36,7 +36,7 @@ class Executor : CommandExecutor, ICommand {
     interface OutputListener {
         fun handleOutputLine(output: String)
         fun handle(output: String)
-        fun onErrorOutput(error:String)
+        fun onErrorOutput(error: String)
     }
 
     override fun mirrorScreen() {
@@ -44,15 +44,15 @@ class Executor : CommandExecutor, ICommand {
     }
 
     override fun killAdbServer() {
-        TODO("Not yet implemented")
+        executeCommand("adb kill-server")
     }
 
     override fun startServer() {
-        TODO("Not yet implemented")
+        executeCommand("adb start-server")
     }
 
     override fun getDevices(isProductModelNeeded: Boolean) {
-        executeCommand("adb devices")
+
     }
 
     override fun tapOnScreen(x: Float, y: Float) {
@@ -87,11 +87,11 @@ class Executor : CommandExecutor, ICommand {
         TODO("Not yet implemented")
     }
 
-    override fun applyKey(key: String) {
-        TODO("Not yet implemented")
+    override fun applyKey(key: Int) {
+        executeCommand("adb shell input keyevent $key")
     }
 
     override fun getHeightAndWidth() {
-        TODO("Not yet implemented")
+        executeCommand(" adb shell wm size")
     }
 }
