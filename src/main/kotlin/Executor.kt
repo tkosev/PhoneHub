@@ -14,18 +14,17 @@ class Executor : CommandExecutor, ICommand {
     override fun executeCommand(command: String) {
         builder.command("cmd.exe", "/c", command)
         process = builder.start()
-        val r = BufferedReader(InputStreamReader(process.inputStream))
+        val bufferedReader = BufferedReader(InputStreamReader(process.inputStream))
+        val stdError = BufferedReader(InputStreamReader(process.errorStream))
         var line: String?
         val appendedLine = StringBuilder()
-        while (true) {
-            line = r.readLine()
-            if (line == null) {
-                break
-            }
+        while (bufferedReader.readLine().also { line = it } != null) {
             appendedLine.append(line)
-            outPutListener.handleOutputLine(line)
+            line?.let { outPutListener.handleOutputLine(it) }
         }
-        outPutListener.handleOut(appendedLine.toString())
+        while (stdError.readLine().also { line = it } != null) {
+            line?.let { outPutListener.onErrorOutput(it) }
+        }
     }
 
     override fun stopProcess() {
@@ -36,8 +35,8 @@ class Executor : CommandExecutor, ICommand {
 
     interface OutputListener {
         fun handleOutputLine(output: String)
-
-        fun handleOut(output: String)
+        fun handle(output: String)
+        fun onErrorOutput(error:String)
     }
 
     override fun mirrorScreen() {

@@ -6,8 +6,12 @@ fun main(args: Array<String>) {
             println("Tag: $output")
         }
 
-        override fun handleOut(output: String) {
+        override fun handle(output: String) {
             println("Tag all : $output")
+        }
+
+        override fun onErrorOutput(error:String) {
+            println("Tag error : $error")
         }
     }
 
