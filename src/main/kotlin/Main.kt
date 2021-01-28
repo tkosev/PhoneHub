@@ -1,4 +1,7 @@
-import AndroidKeys.KEYCODE_CALL
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 fun main(args: Array<String>) {
     val executor = Executor()
@@ -16,7 +19,11 @@ fun main(args: Array<String>) {
         }
     }
 
+    GlobalScope.launch {
+        delay(7000)
+        executor.stopProcess()
+    }
     executor.getDevices()
-    executor.tapOnScreen(200f, 200f)
-    executor.applyKey(KEYCODE_CALL)
+    executor.mirrorScreen()
+
 }

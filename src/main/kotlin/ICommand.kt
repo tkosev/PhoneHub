@@ -44,7 +44,7 @@ interface ICommand {
     fun connectToIP(ip: String)
     fun homeButton()
     fun inputTextOnSelectField(text: String)
-    fun screenShot()
+    fun screenShot(filePath:String)
     fun applyKey(key: Int)
     fun getHeightAndWidth()
 }
