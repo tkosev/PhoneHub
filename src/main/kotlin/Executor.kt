@@ -33,7 +33,7 @@ class Executor : CommandExecutor, ICommand {
 
     override fun stopProcess() {
         if (this::process.isInitialized) {
-            process.destroy()
+            executeCommand("Taskkill /F /IM adb.exe")
         }
     }
 

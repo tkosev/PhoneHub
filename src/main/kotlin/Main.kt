@@ -23,7 +23,6 @@ fun main(args: Array<String>) {
         delay(7000)
         executor.stopProcess()
     }
-    executor.getDevices()
     executor.mirrorScreen()
 
 }
