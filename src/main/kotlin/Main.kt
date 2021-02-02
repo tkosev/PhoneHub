@@ -1,28 +1,13 @@
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import adb_commands.AdbScreenSize
+import adb_commands.GetDevicesCommand
+import kotlinx.coroutines.*
 
-fun main(args: Array<String>) {
-    val executor = Executor()
-    executor.outPutListener = object : Executor.OutputListener {
-        override fun handleOutputLine(output: String) {
-            println("Tag: $output")
-        }
-
-        override fun handle(output: String) {
-            println("Tag all : $output")
-        }
-
-        override fun onErrorOutput(error: String) {
-            println("Tag error : $error")
-        }
+fun main() {
+    runBlocking {
+        val executor = Executor()
+        val one = executor.executeADBCommand(GetDevicesCommand())
+        val two = executor.executeADBCommand(AdbScreenSize())
+        println("Executor in $one  $two ")
     }
-
-    GlobalScope.launch {
-        delay(7000)
-        executor.stopProcess()
-    }
-    executor.mirrorScreen()
-
 }
+

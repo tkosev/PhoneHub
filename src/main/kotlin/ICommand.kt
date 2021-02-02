@@ -1,3 +1,5 @@
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Job
 
 /*
 == Files
@@ -33,20 +35,20 @@ adb shell getprop ro.build.version.release
  */
 
 interface ICommand {
-    fun mirrorScreen()
-    fun killAdbServer()
-    fun startServer()
-    fun getDevices(isProductModelNeeded: Boolean = false)
-    fun tapOnScreen(x: Float, y: Float)
-    fun rebootDevice(isRecovery: Boolean = false)
-    fun rebootDeviceBootloader()
-    fun root()
-    fun connectToIP(ip: String)
-    fun homeButton()
-    fun inputTextOnSelectField(text: String)
-    fun screenShot(filePath:String)
-    fun applyKey(key: Int)
-    fun getHeightAndWidth()
+    suspend fun mirrorScreen(): String
+    suspend fun killAdbServer(): String
+    suspend fun startServer(): String
+    suspend fun getDevicesAsync(isProductModelNeeded: Boolean = false): String
+    suspend fun tapOnScreen(x: Float, y: Float)
+    suspend fun rebootDevice(isRecovery: Boolean = false): String
+    suspend fun rebootDeviceBootloader(): String
+    suspend fun root(): String
+    suspend fun connectToIP(ip: String): String
+    suspend fun homeButton(): String
+    suspend fun inputTextOnSelectField(text: String): String
+    suspend fun screenShot(filePath: String): String
+    suspend fun applyKey(key: Int): String
+    suspend fun getHeightAndWidth(): String
 }
 /**
 adb help // List all comands

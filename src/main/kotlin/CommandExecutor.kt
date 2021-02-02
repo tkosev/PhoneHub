@@ -1,4 +1,5 @@
+import adb_commands.base.BaseAdbCommand
+
 interface CommandExecutor {
-    fun executeCommand(command: String)
-    fun stopProcess()
+    suspend  fun<T> executeADBCommand(adbCommand: BaseAdbCommand<T>) : T
 }
