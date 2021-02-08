@@ -19,4 +19,8 @@ class AdbConnectToIP(private val ip: String) : BaseAdbCommand<Unit>() {
         builder.command("cmd.exe", "/c", command)
         process = builder.start()
     }
+
+    override fun handleOutput() {
+        TODO("Not yet implemented")
+    }
 }

@@ -20,4 +20,8 @@ class AdbMirrorScreen : BaseAdbCommand<String>() {
         builder.command("cmd.exe", "/c", command)
         process = builder.start()
     }
+
+    override fun handleOutput(): String {
+        TODO("Not yet implemented")
+    }
 }

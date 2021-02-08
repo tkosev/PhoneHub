@@ -19,4 +19,8 @@ class AdbRebootDevice(private val isRecovery: Boolean) : BaseAdbCommand<Unit>() 
         builder.command("cmd.exe", "/c", command)
         process = builder.start()
     }
+
+    override fun handleOutput() {
+        TODO("Not yet implemented")
+    }
 }

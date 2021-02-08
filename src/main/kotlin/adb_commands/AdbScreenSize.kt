@@ -21,4 +21,8 @@ class AdbScreenSize : BaseAdbCommand<String>() {
         process = builder.start()
 
     }
+
+    override fun handleOutput(): String {
+        TODO("Not yet implemented")
+    }
 }

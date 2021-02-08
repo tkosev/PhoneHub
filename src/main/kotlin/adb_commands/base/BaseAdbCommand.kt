@@ -1,8 +1,7 @@
 package adb_commands.base
 
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.lang.StringBuilder
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 abstract class BaseAdbCommand<T> : ADBCommand<T> {
 
@@ -12,18 +11,17 @@ abstract class BaseAdbCommand<T> : ADBCommand<T> {
         ProcessBuilder().apply { redirectErrorStream(true) }
     }
 
-    protected fun handleOutput(): String {
-        val bufferedReader = BufferedReader(InputStreamReader(process.inputStream))
-        //val stdError = BufferedReader(InputStreamReader(process.errorStream))
-        var line: String?
-        val appendedLine = StringBuilder()
-        while (bufferedReader.readLine().also { line = it } != null) {
-            appendedLine.append(line)
+    override suspend fun execute(): T {
+        return withContext(Dispatchers.IO) {
+            start()
+            handleOutput()
         }
-        //TODO handle errors:
-        //while (stdError.readLine().also { line = it } != null) {
-        //}
-        return appendedLine.toString()
     }
+
+    private fun start() {
+        builder.command("cmd.exe", "/c", command)
+        process = builder.start()
+    }
+    protected abstract fun handleOutput(): T
 
 }

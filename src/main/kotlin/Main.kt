@@ -1,13 +1,11 @@
-import adb_commands.AdbScreenSize
-import adb_commands.GetDevicesCommand
+import adb_commands.AdbGetDevices
 import kotlinx.coroutines.*
 
 fun main() {
     runBlocking {
         val executor = Executor()
-        val one = executor.executeADBCommand(GetDevicesCommand())
-        val two = executor.executeADBCommand(AdbScreenSize())
-        println("Executor in $one  $two ")
+        val one = executor.executeADBCommand(AdbGetDevices())
+        println("Executor in $one ")
     }
 }
 

@@ -19,4 +19,8 @@ class AdbInputTextOnSelectedField(private val text: String) : BaseAdbCommand<Uni
         builder.command("cmd.exe", "/c", command)
         process = builder.start()
     }
+
+    override fun handleOutput() {
+        TODO("Not yet implemented")
+    }
 }

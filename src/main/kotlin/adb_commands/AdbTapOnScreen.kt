@@ -19,4 +19,8 @@ class AdbTapOnScreen(private val xCoordinate: Float, private val yCoordinate: Fl
         builder.command("cmd.exe", "/c", command)
         process = builder.start()
     }
+
+    override fun handleOutput() {
+        TODO("Not yet implemented")
+    }
 }
